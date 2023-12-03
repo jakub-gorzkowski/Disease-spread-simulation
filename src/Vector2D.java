@@ -1,6 +1,6 @@
 public class Vector2D implements VectorInterface {
-    protected double x;
-    protected double y;
+    private double x;
+    private double y;
 
     Vector2D(double x, double y) {
         this.x = x;
@@ -21,5 +21,21 @@ public class Vector2D implements VectorInterface {
     @Override
     public double[] getComponents() {
         return new double[]{x, y};
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public void setY(double y) {
+        this.y = y;
     }
 }

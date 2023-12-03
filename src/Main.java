@@ -32,5 +32,20 @@ public class Main {
          *  - Stan ma iść na osobników
          */
 
+        /*
+        Subject subject = new Subject();
+        subject.setHorizontalPosition(1);
+        subject.setVerticalPosition(1);
+
+        int x = (int) subject.getHorizontalPosition();
+        int y = (int) subject.getVerticalPosition();
+
+        Board board = Board.getInstance(20, 20);
+        GUI userInterface = GUI.getInstance(board.getX(), board.getY());
+        userInterface.initializeUI();
+        userInterface.visualizeSubjects(x, y);
+*/
+
+        new Window(1920, 1080);
     }
 }
