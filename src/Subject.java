@@ -4,12 +4,13 @@ public class Subject {
     private boolean isInfected;
     private boolean hasSymptoms;
 
-    private final double immunityProbability = 50.0;
-    private final double infectionProbability = 50.0;
-    private final double symptomsProbability = 50.0;
+    private final double immunityProbability = 1.0;
+    private final double infectionProbability = 7.5;
+    private final double symptomsProbability = 95.0;
 
-    private int verticalPosition;
-    private int horizontalPosition;
+    private double verticalPosition;
+    private double horizontalPosition;
+    private int contactTime;
 
     public Subject() {
         hasImmunity = DrawResultByProbability.isPositive(immunityProbability);
@@ -39,24 +40,31 @@ public class Subject {
         this.state = state;
     } // potrzebne do klasy Contact
 
-    public int getHorizontalPosition() { // do klasy Panel
+    public double getHorizontalPosition() { // do klasy Panel
         return horizontalPosition;
     }
 
-    public int getVerticalPosition() { // do klasy Panel
+    public double getVerticalPosition() { // do klasy Panel
         return verticalPosition;
     }
 
-    public void setHorizontalPosition(int horizontalPosition) { // do klasy Panel
+    public void setHorizontalPosition(double horizontalPosition) { // do klasy Panel
         this.horizontalPosition = horizontalPosition;
     }
 
-    public void setVerticalPosition(int verticalPosition) { // do klasy Panel
+    public void setVerticalPosition(double verticalPosition) { // do klasy Panel
         this.verticalPosition = verticalPosition;
     }
 
-    public void moveSubject(Vector2D param) {
-        this.verticalPosition += param.getX();
-        this.horizontalPosition += param.getY();
+    public void increaseContactTime(int time){
+        this.contactTime += time;
+    }
+
+    public int getContactTime() {
+        return contactTime;
+    }
+
+    public void resetContactTime(){
+        this.contactTime = 0;
     }
 }

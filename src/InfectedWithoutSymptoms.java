@@ -8,7 +8,12 @@ public class InfectedWithoutSymptoms implements State {
     public boolean isInfected() {
         return true;
     }
-
+    public boolean isImmune() {
+        return true;
+    }
+    public boolean hasSymptoms() {
+        return false;
+    }
     public Color getColor() {
         return stateColor;
     }

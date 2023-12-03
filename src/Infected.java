@@ -8,7 +8,12 @@ public class Infected implements State {
     public boolean isInfected() {
         return true;
     }
-
+    public boolean isImmune() {
+        return true;
+    }
+    public boolean hasSymptoms() {
+        return true;
+    }
     public Color getColor() {
         return stateColor;
     }
