@@ -14,6 +14,7 @@ public class Window extends JFrame {
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.add(panel);
+        this.setTitle("Disease spread simulation");
         this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
@@ -21,7 +22,7 @@ public class Window extends JFrame {
 
     public static Window getInstance(int width, int height) {
         if (instance == null) {
-            return new Window(width, height);
+            instance = new Window(width, height);
         }
         return instance;
     }

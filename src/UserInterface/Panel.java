@@ -2,7 +2,6 @@ package UserInterface;
 
 import Handlers.SubjectContactHandler;
 import Handlers.SubjectMovementHandler;
-import Handlers.TimeDisplayHandler;
 import ProgressSave.CareTaker;
 import ProgressSave.Memento;
 import SubjectState.Subject;
@@ -20,6 +19,7 @@ public class Panel extends JPanel implements ActionListener {
     private final int STEP_SIZE = 40;
     private final int CIRCLE_RADIUS = 10;
     private final int STEPS_IN_SECOND = 1000;
+    private JLabel timeLabel;
     private final int panelWidth;
     private final int panelHeight;
     Timer timer;
@@ -34,7 +34,7 @@ public class Panel extends JPanel implements ActionListener {
         this.panelWidth = panelWidth;
         this.panelHeight = panelHeight;
         this.setPreferredSize(new Dimension(panelWidth, panelHeight));
-        this.setBackground(Color.BLACK);
+        this.setBackground(Color.WHITE);
 
         subjectList = new ArrayList<>();
 
@@ -49,6 +49,14 @@ public class Panel extends JPanel implements ActionListener {
         contactTimes = new double[subjectList.size()][subjectList.size()];
         infectionTimes = new double[subjectList.size()][subjectList.size()];
         timer.start();
+
+        timeLabel = new JLabel(String.valueOf(currentTime));
+        Font customFont = new Font("custom", Font.BOLD, 20);
+        timeLabel.setFont(customFont);
+        timeLabel.setForeground(Color.BLACK);
+        timeLabel.setOpaque(true);
+        timeLabel.setBackground(new Color(0, 0, 0, 0));
+        add(timeLabel);
     }
     @Override
     protected void paintComponent(Graphics g) {
@@ -62,8 +70,8 @@ public class Panel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (currentTime % STEPS_IN_SECOND == 0) {
             careTaker.addMemento(new Memento(this.currentTime, this.subjectList, this.contactTimes, this.infectionTimes));
+            timeLabel.setText(String.valueOf(currentTime / 1000));
         }
-        TimeDisplayHandler.timerDisplay(currentTime);
         SubjectMovementHandler.handleMovement(STEP_SIZE, subjectList, panelWidth, panelHeight);
         SubjectContactHandler.handleContact(STEP_SIZE, subjectList, contactTimes, infectionTimes);
         repaint();

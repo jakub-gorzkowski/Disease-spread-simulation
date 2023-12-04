@@ -10,7 +10,7 @@ public class Main {
         Window window = Window.getInstance(800, 600);
 
         while (true) {
-            System.out.println("Load simulation state:");
+            System.out.print("Load simulation state: ");
             try {
                 input = scanner.nextInt();
                 window.refresh(input);
