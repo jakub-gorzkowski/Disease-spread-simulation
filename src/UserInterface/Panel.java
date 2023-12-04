@@ -15,7 +15,7 @@ import java.util.List;
 import Random.*;
 
 public class Panel extends JPanel implements ActionListener {
-    private final int SUBJECT_COUNT = 1000;
+    private final int SUBJECT_COUNT = 1250;
     private final int STEP_SIZE = 40;
     private final int CIRCLE_RADIUS = 10;
     private int panelWidth;

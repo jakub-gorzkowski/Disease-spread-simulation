@@ -59,7 +59,7 @@ public class SubjectMovementHandler {
                 subject.increaseSicknessTime(stepSize);
             }
 
-            if (subject.getSicknessTime() >= RecoveryTimeGenerator.generateTime()) {
+            if (subject.getSicknessTime() >= RecoveryTimeGenerator.generateTime() && subject.getState().isInfected()) {
                 subject.setState(new Immune(subject));
                 subject.resetSicknessTime();
             }
