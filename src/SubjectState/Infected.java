@@ -1,20 +1,20 @@
-package SubjectStatus;
+package SubjectState;
 
 import java.awt.*;
 
-public class Immune implements State {
-    Color stateColor = Color.BLUE;
-    public Immune (Subject subject) {
-
+public class Infected implements State {
+    Color stateColor = Color.RED;
+    public Infected (Subject subject) {
+        super();
     }
     public boolean isInfected() {
-        return false;
+        return true;
     }
     public boolean isImmune() {
         return true;
     }
     public boolean hasSymptoms() {
-        return false;
+        return true;
     }
     public Color getColor() {
         return stateColor;

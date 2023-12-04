@@ -3,7 +3,7 @@ package UserInterface;
 import Handlers.SubjectContactHandler;
 import Handlers.SubjectMovementHandler;
 import Handlers.TimeDisplayHandler;
-import SubjectStatus.Subject;
+import SubjectState.Subject;
 
 import javax.swing.*;
 import java.awt.*;
@@ -57,7 +57,7 @@ public class Panel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         TimeDisplayHandler.timerDisplay(currentTime);
-        SubjectMovementHandler.handleMovement(subjectList, panelWidth, panelHeight);
+        SubjectMovementHandler.handleMovement(STEP_SIZE, subjectList, panelWidth, panelHeight);
         SubjectContactHandler.handleContact(STEP_SIZE, subjectList, contactTimes, infectionTimes);
         repaint();
         this.currentTime += STEP_SIZE;

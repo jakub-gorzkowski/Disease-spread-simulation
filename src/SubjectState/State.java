@@ -1,4 +1,4 @@
-package SubjectStatus;
+package SubjectState;
 
 import java.awt.*;
 

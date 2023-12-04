@@ -2,9 +2,11 @@ package Handlers;
 
 import Random.DrawResultByProbability;
 import Random.MoveGenerator;
+import Random.RecoveryTimeGenerator;
 import Random.SubjectDistributor;
-import SubjectStatus.Infected;
-import SubjectStatus.Subject;
+import SubjectState.Immune;
+import SubjectState.Infected;
+import SubjectState.Subject;
 
 import java.util.List;
 
@@ -15,7 +17,7 @@ public class SubjectMovementHandler {
     private static double yPosition;
     private static double xVelocity;
     private static double yVelocity;
-    public static void handleMovement(List<Subject> subjectList, int panelWidth, int panelHeight) {
+    public static void handleMovement(int stepSize, List<Subject> subjectList, int panelWidth, int panelHeight) {
         for (Subject subject: subjectList) {
             xPosition = subject.getHorizontalPosition();
             yPosition = subject.getVerticalPosition();
@@ -51,6 +53,15 @@ public class SubjectMovementHandler {
                         subject.setState(new Infected(subject));
                     }
                 }
+            }
+
+            if (subject.getState().isInfected()) {
+                subject.increaseSicknessTime(stepSize);
+            }
+
+            if (subject.getSicknessTime() >= RecoveryTimeGenerator.generateTime()) {
+                subject.setState(new Immune(subject));
+                subject.resetSicknessTime();
             }
 
             xPosition += xVelocity;

@@ -1,10 +1,10 @@
 package DiseaseFactor;
 
 import Random.DrawResultByProbability;
-import SubjectStatus.Infected;
-import SubjectStatus.InfectedWithoutSymptoms;
-import SubjectStatus.State;
-import SubjectStatus.Subject;
+import SubjectState.Infected;
+import SubjectState.InfectedWithoutSymptoms;
+import SubjectState.State;
+import SubjectState.Subject;
 
 public class Contact {
     private static final int SYMPTOMS_PROBABILITY = 90;

@@ -1,4 +1,4 @@
-package SubjectStatus;
+package SubjectState;
 import Random.*;
 
 public class Subject {
@@ -14,6 +14,7 @@ public class Subject {
     private double verticalPosition;
     private double horizontalPosition;
     private int contactTime;
+    private int sicknessTime;
 
     public Subject() {
         hasImmunity = DrawResultByProbability.isPositive(IMMUNITY_PROBABILITY);
@@ -69,5 +70,14 @@ public class Subject {
 
     public void resetContactTime(){
         this.contactTime = 0;
+    }
+    public int getSicknessTime() {
+        return this.sicknessTime;
+    }
+    public void increaseSicknessTime(int time) {
+        this.sicknessTime += time;
+    }
+    public void resetSicknessTime() {
+        this.sicknessTime = 0;
     }
 }

@@ -1,6 +1,6 @@
 package DiseaseFactor;
 
-import SubjectStatus.Subject;
+import SubjectState.Subject;
 
 public class Distance {
     public static double getDistance(Subject subject1, Subject subject2) {
