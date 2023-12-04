@@ -11,10 +11,10 @@ import java.util.List;
 public class SubjectContactHandler {
     private final static int INFECTION_RANGE = 20;
     private final static int INFECTION_TIME = 3000;
-    private static int timeToRecovery;
     public static void handleContact(int stepSize, List<Subject> subjectList, double[][] contactTimes, double[][] infectionTimes) {
         for (int i = 0; i < subjectList.size(); i++) {
             for (int j = i + 1; j < subjectList.size(); j++) {
+                int timeToRecovery;
                 Subject subject1 = subjectList.get(i);
                 Subject subject2 = subjectList.get(j);
 

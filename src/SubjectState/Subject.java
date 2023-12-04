@@ -1,7 +1,7 @@
 package SubjectState;
 import Random.*;
 
-public class Subject {
+public class Subject implements Cloneable{
     private State state;
     private boolean hasImmunity;
     private boolean isInfected;
@@ -79,5 +79,10 @@ public class Subject {
     }
     public void resetSicknessTime() {
         this.sicknessTime = 0;
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }

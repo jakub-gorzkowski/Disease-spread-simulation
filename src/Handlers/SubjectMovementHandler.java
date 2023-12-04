@@ -8,22 +8,18 @@ import SubjectState.Immune;
 import SubjectState.Infected;
 import SubjectState.Subject;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class SubjectMovementHandler {
     private final static int TURN_BACK_PROBABILITY = 50;
     private final static int INFECTION_RESPAWN_PROBABILITY = 10;
-    private static double xPosition;
-    private static double yPosition;
-    private static double xVelocity;
-    private static double yVelocity;
-    public static void handleMovement(int stepSize, List<Subject> subjectList, int panelWidth, int panelHeight) {
+    public static void handleMovement(int stepSize, ArrayList<Subject> subjectList, int panelWidth, int panelHeight) {
         for (Subject subject: subjectList) {
-            xPosition = subject.getHorizontalPosition();
-            yPosition = subject.getVerticalPosition();
+            double xPosition = subject.getHorizontalPosition();
+            double yPosition = subject.getVerticalPosition();
 
-            xVelocity = MoveGenerator.generateVector().getX();
-            yVelocity = MoveGenerator.generateVector().getY();
+            double xVelocity = MoveGenerator.generateVector().getX();
+            double yVelocity = MoveGenerator.generateVector().getY();
 
             if (xPosition >= panelWidth || xPosition < 0) {
                 if (DrawResultByProbability.isPositive(TURN_BACK_PROBABILITY)) {

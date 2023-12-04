@@ -3,6 +3,8 @@ package UserInterface;
 import Handlers.SubjectContactHandler;
 import Handlers.SubjectMovementHandler;
 import Handlers.TimeDisplayHandler;
+import ProgressSave.CareTaker;
+import ProgressSave.Memento;
 import SubjectState.Subject;
 
 import javax.swing.*;
@@ -10,7 +12,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.List;
 
 import Random.*;
 
@@ -18,15 +19,18 @@ public class Panel extends JPanel implements ActionListener {
     private final int SUBJECT_COUNT = 1250;
     private final int STEP_SIZE = 40;
     private final int CIRCLE_RADIUS = 10;
-    private int panelWidth;
-    private int panelHeight;
+    private final int STEPS_IN_SECOND = 1000;
+    private final int panelWidth;
+    private final int panelHeight;
     Timer timer;
     private int currentTime = 0;
-    private List<Subject> subjectList;
+    private ArrayList<Subject> subjectList;
     private double[][] contactTimes;
     private double[][] infectionTimes;
+    private CareTaker careTaker;
 
-    Panel(int panelWidth, int panelHeight) {
+    Panel(CareTaker careTaker, int panelWidth, int panelHeight) {
+        this.careTaker = careTaker;
         this.panelWidth = panelWidth;
         this.panelHeight = panelHeight;
         this.setPreferredSize(new Dimension(panelWidth, panelHeight));
@@ -56,10 +60,21 @@ public class Panel extends JPanel implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (currentTime % STEPS_IN_SECOND == 0) {
+            careTaker.addMemento(new Memento(this.currentTime, this.subjectList, this.contactTimes, this.infectionTimes));
+        }
         TimeDisplayHandler.timerDisplay(currentTime);
         SubjectMovementHandler.handleMovement(STEP_SIZE, subjectList, panelWidth, panelHeight);
         SubjectContactHandler.handleContact(STEP_SIZE, subjectList, contactTimes, infectionTimes);
         repaint();
         this.currentTime += STEP_SIZE;
+    }
+
+    public void loadProgress(Memento memento) {
+        this.currentTime = memento.getTime();
+        this.subjectList = memento.getSubjectList();
+        this.contactTimes = memento.getContactTimes();
+        this.infectionTimes = memento.getInfectionTimes();
+        repaint();
     }
 }
