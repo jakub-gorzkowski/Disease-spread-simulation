@@ -1,26 +1,29 @@
+package SubjectStatus;
+import Random.*;
+
 public class Subject {
     private State state;
     private boolean hasImmunity;
     private boolean isInfected;
     private boolean hasSymptoms;
 
-    private final double immunityProbability = 1.0;
-    private final double infectionProbability = 7.5;
-    private final double symptomsProbability = 95.0;
+    private final double IMMUNITY_PROBABILITY = 1.0;
+    private final double INFECTION_PROBABILITY = 7.5;
+    private final double SYMPTOMS_PROBABILITY = 95.0;
 
     private double verticalPosition;
     private double horizontalPosition;
     private int contactTime;
 
     public Subject() {
-        hasImmunity = DrawResultByProbability.isPositive(immunityProbability);
+        hasImmunity = DrawResultByProbability.isPositive(IMMUNITY_PROBABILITY);
 
         if (hasImmunity) {
             state = new Immune(this);
         } else {
-            isInfected = DrawResultByProbability.isPositive(infectionProbability);
+            isInfected = DrawResultByProbability.isPositive(INFECTION_PROBABILITY);
             if (isInfected) {
-                hasSymptoms = DrawResultByProbability.isPositive(symptomsProbability);
+                hasSymptoms = DrawResultByProbability.isPositive(SYMPTOMS_PROBABILITY);
                 if (hasSymptoms) {
                     state = new Infected(this);
                 } else {
@@ -34,25 +37,25 @@ public class Subject {
 
     public State getState() {
         return this.state;
-    } // potrzebne do klasy Contact
+    }
 
     public void setState(State state) {
         this.state = state;
-    } // potrzebne do klasy Contact
+    }
 
-    public double getHorizontalPosition() { // do klasy Panel
+    public double getHorizontalPosition() { // do klasy UserInterface.Panel
         return horizontalPosition;
     }
 
-    public double getVerticalPosition() { // do klasy Panel
+    public double getVerticalPosition() { // do klasy UserInterface.Panel
         return verticalPosition;
     }
 
-    public void setHorizontalPosition(double horizontalPosition) { // do klasy Panel
+    public void setHorizontalPosition(double horizontalPosition) { // do klasy UserInterface.Panel
         this.horizontalPosition = horizontalPosition;
     }
 
-    public void setVerticalPosition(double verticalPosition) { // do klasy Panel
+    public void setVerticalPosition(double verticalPosition) { // do klasy UserInterface.Panel
         this.verticalPosition = verticalPosition;
     }
 

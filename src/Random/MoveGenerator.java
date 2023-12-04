@@ -1,3 +1,6 @@
+package Random;
+
+import Vector.Vector2D;
 public class MoveGenerator {
     public static Vector2D generateVector() {
         int directionFactor = (int) (100 * Math.random());
