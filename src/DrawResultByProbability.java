@@ -1,5 +1,3 @@
-package Random;
-
 public class DrawResultByProbability {
     private static final double probabilityBase = 100.0;
 

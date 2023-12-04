@@ -1,5 +1,3 @@
-import UserInterface.Window;
-
 public class Main {
     public static void main(String[] args) {
         /*
@@ -34,6 +32,12 @@ public class Main {
          *  - Stan ma iść na osobników
          */
 
+        /*
+
+        // dodać usuwanie obiektów które wyszły po za obszar symulacji i wstawiać w ich miejsce nowe wkraczające
+*/
+
+        // klasy do usunięcia: Board, GUI, UserInterface
         new Window(800, 600);
     }
 }

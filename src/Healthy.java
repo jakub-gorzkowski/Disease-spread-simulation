@@ -1,10 +1,8 @@
-package SubjectStatus;
-
 import java.awt.*;
 
 public class Healthy implements State {
     Color stateColor = Color.GREEN;
-    public Healthy (Subject subject) {
+    Healthy (Subject subject) {
 
     }
     public boolean isInfected() {

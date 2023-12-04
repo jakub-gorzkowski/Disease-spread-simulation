@@ -1,16 +1,7 @@
-package DiseaseFactor;
-
-import Random.DrawResultByProbability;
-import SubjectStatus.Infected;
-import SubjectStatus.InfectedWithoutSymptoms;
-import SubjectStatus.State;
-import SubjectStatus.Subject;
-
 public class Contact {
     private static final int SYMPTOMS_PROBABILITY = 90;
     private static final int NOSYMPTOMS_INFECTION_PROBABILITY = 50;
-
-    public static void analyseSubjectsContact(Subject subject1, Subject subject2) {
+    static void analyseSubjectsContact(Subject subject1, Subject subject2) {
         State subject1State = subject1.getState();
         State subject2State = subject2.getState();
 

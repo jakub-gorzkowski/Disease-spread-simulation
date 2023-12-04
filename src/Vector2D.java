@@ -1,10 +1,8 @@
-package Vector;
-
 public class Vector2D implements VectorInterface {
     private double x;
     private double y;
 
-    public Vector2D(double x, double y) {
+    Vector2D(double x, double y) {
         this.x = x;
         this.y = y;
     }

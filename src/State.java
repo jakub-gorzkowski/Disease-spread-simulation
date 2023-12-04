@@ -1,5 +1,3 @@
-package SubjectStatus;
-
 import java.awt.*;
 
 public interface State {

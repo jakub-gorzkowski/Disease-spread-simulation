@@ -1,5 +1,3 @@
-package Random;
-
 import java.util.Random;
 
 public class SubjectDistributor {

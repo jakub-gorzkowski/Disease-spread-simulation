@@ -1,7 +1,3 @@
-package DiseaseFactor;
-
-import SubjectStatus.Subject;
-
 public class Distance {
     public static double getDistance(Subject subject1, Subject subject2) {
         double subject1X = subject1.getHorizontalPosition();
